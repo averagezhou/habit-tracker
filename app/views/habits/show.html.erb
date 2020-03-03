@@ -1,0 +1,145 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Habit #<%= @habit.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/habits" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_habit/<%= @habit.id %>" class="btn btn-block btn-outline-secondary">
+          Delete habit
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @habit.name %>
+      </dd>
+
+      <dt>
+        Time of day
+      </dt>
+      <dd>
+        <%= @habit.time_of_day %>
+      </dd>
+
+      <dt>
+        First day
+      </dt>
+      <dd>
+        <%= @habit.first_day %>
+      </dd>
+
+      <dt>
+        Checkin count
+      </dt>
+      <dd>
+        <%= @habit.checkin_count %>
+      </dd>
+
+      <dt>
+        Checkin today
+      </dt>
+      <dd>
+        <%= @habit.checkin_today %>
+      </dd>
+
+      <dt>
+        Owner
+      </dt>
+      <dd>
+        <%= @habit.owner_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@habit.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@habit.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Edit habit
+    </h2>
+
+    <form action="/modify_habit/<%= @habit.id %>"  method="post" >
+      <div class="form-group">
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name" class="form-control" value="<%= @habit.name %>">
+      </div>
+
+      <div class="form-group">
+        <label for="time_of_day_box">
+          Time of day
+        </label>
+
+        <input type="time" id="time_of_day_box" name="query_time_of_day" class="form-control" value="<%= @habit.time_of_day %>">
+      </div>
+
+      <div class="form-group">
+        <label for="first_day_box">
+          First day
+        </label>
+
+        <input type="date" id="first_day_box" name="query_first_day" class="form-control" value="<%= @habit.first_day %>">
+      </div>
+
+      <div class="form-group">
+        <label for="checkin_count_box">
+          Checkin count
+        </label>
+
+        <input type="text" id="checkin_count_box" name="query_checkin_count" class="form-control" value="<%= @habit.checkin_count %>">
+      </div>
+
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="checkin_today_box" name="query_checkin_today" value="1" <%= "checked" if @habit.checkin_today %>>
+
+        <label class="custom-control-label"
+          for="checkin_today_box">Checkin today</label>
+      </div>
+
+      <div class="form-group">
+        <label for="owner_id_box">
+          Owner
+        </label>
+
+        <input type="text" id="owner_id_box" name="query_owner_id" class="form-control" value="<%= @habit.owner_id %>">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Update habit
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

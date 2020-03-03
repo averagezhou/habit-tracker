@@ -1,0 +1,164 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      List of all habits
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Add a new habit
+    </h2>
+
+    <form action="/insert_habit" method="post">
+      <div class="form-group">
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="time_of_day_box">
+          Time of day
+        </label>
+
+        <input type="time" id="time_of_day_box" name="query_time_of_day" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="first_day_box">
+          First day
+        </label>
+
+        <input type="date" id="first_day_box" name="query_first_day" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="checkin_count_box">
+          Checkin count
+        </label>
+
+        <input type="text" id="checkin_count_box" name="query_checkin_count" class="form-control">
+      </div>
+
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="checkin_today_box" name="query_checkin_today" value="1">
+
+        <label class="custom-control-label" for="checkin_today_box">Checkin today</label>
+      </div>
+
+      <div class="form-group">
+        <label for="owner_id_box">
+          Owner
+        </label>
+
+        <input type="text" id="owner_id_box" name="query_owner_id" class="form-control">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Create habit
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Time of day
+        </th>
+
+        <th>
+          First day
+        </th>
+
+        <th>
+          Checkin count
+        </th>
+
+        <th>
+          Checkin today
+        </th>
+
+        <th>
+          Owner
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @habits.each do |habit| %>
+      <tr>
+        <td>
+          <%= habit.id %>
+        </td>
+
+        <td>
+          <%= habit.name %>
+        </td>
+
+        <td>
+          <%= habit.time_of_day %>
+        </td>
+
+        <td>
+          <%= habit.first_day %>
+        </td>
+
+        <td>
+          <%= habit.checkin_count %>
+        </td>
+
+        <td>
+          <%= habit.checkin_today %>
+        </td>
+
+        <td>
+          <%= habit.owner_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(habit.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(habit.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/habits/<%= habit.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
