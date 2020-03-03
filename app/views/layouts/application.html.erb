@@ -16,6 +16,39 @@
   </head>
 
   <body>
+    <nav>
+      <ul>
+        <li>
+        <a href="/user_sign_up">User Sign Up</a>
+        </li>
+        <li>
+        <a href="/user_sign_out">User Sign Out</a>
+        </li>
+        <li>
+        <a href="/user_sign_in">New Sign In</a>
+        </li>
+
+        <li>
+        <a href="/habits">Add a habit</a>
+        </li>
+
+        <li>
+        <%= session.fetch(:user_id) %>
+        </li>
+      </ul>
+    </nav>
+
+    <% if notice.present? %>
+      <div style="border: thin green solid; color: green">
+        <%= notice %>
+      </div>
+    <% end %>
+
+    <% if alert.present? %>
+      <div style="border: thin red solid; color: red">
+        <%= alert %>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

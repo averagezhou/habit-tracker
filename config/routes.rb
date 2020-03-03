@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-
+  get("/", { :controller => "habits", :action => "index" })
 
   # Routes for the Habit resource:
 
